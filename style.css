@@ -1027,3 +1027,6 @@ a.event_add_to_cart:hover{
     border-radius: 2px;
     background-color: rgba(46,46,46,0.75)!important;
 }
+.the_level img{
+    width:15px;
+}

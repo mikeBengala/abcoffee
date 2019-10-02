@@ -21,4 +21,11 @@ function calendar_shortcode(){
     return ob_get_clean();
 }
 add_shortcode("calendario", "calendar_shortcode");
+
+function get_current_product_variations(){
+    ob_start();
+    get_template_part( 'template-parts/variations' );
+    return ob_get_clean();
+}
+add_shortcode("get_variations", "get_current_product_variations");
 ?>
