@@ -1007,11 +1007,10 @@ div#page-container {overflow-x: hidden;}
     text-transform: uppercase;
     color:#9DA9B9;
 }
-a.event_add_to_cart{
+.tooltip a.event_add_to_cart{
     display: block;
     width:100%;
     padding:10px;
-    border-color: ;
     color: #2E2E2E !important;
     border-top: solid 1px rgba(0,0,0,0.1);
     border-radius: 1px;
@@ -1030,3 +1029,123 @@ a.event_add_to_cart:hover{
 .the_level img{
     width:15px;
 }
+/* shortcode variations view*/
+.abcoffee_variations_wrap{
+    max-width:960px;
+    width:100%;
+    margin:auto;
+    padding:0 30px;
+}
+.abcoffee_the_variation{
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    margin-bottom:10px;
+}
+.abcoffee_the_variation:last-child{
+    margin-bottom:0;
+}
+.abcoffee_the_variation .first_section, .abcoffee_the_variation .seccond_section{
+    width:50%;
+    padding:25px 30px;
+    display: flex;
+}
+.abcoffee_the_variation .first_section{
+    padding-right:15px;
+    justify-content: flex-start;
+}
+.abcoffee_the_variation .seccond_section{
+    padding-left:15px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.abcoffee_the_variation .date{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right:20px;
+    width:50%;
+}
+.abcoffee_the_variation .date span{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+    color:#969696;
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+.abcoffee_the_variation .the_name{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9DA9B9;
+    padding-bottom:7px;
+}
+.abcoffee_the_variation .the_level span{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 100%;
+    color: #525252;
+    margin-left: 6px;
+}
+.abcoffee_the_variation .the_price{
+    text-align: center;
+    color: #3D3D3D;
+    font-family: Playfair Display;
+    font-size: 20px;
+    line-height: 100%;
+    display: block;
+    margin:0;
+}
+.abcoffee_the_variation .availability p.stock{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color:#9DA9B9;
+}
+.abcoffee_the_variation .the_add_to_cart_button_wrap, .abcoffee_the_variation .availability, .abcoffee_the_variation .the_price{
+    width:33.333%;
+}
+.abcoffee_the_variation .availability, .abcoffee_the_variation .the_price{
+    padding-right:20px;
+    text-align: right;
+}
+.abcoffee_the_variation .variations_add_to_cart{
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    padding:12px 20px;
+    color: #2E2E2E;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.06);
+    transition: all 0.35s ease;
+}
+.abcoffee_the_variation .variations_add_to_cart:hover{
+    color: #F5EEDA!important;
+    border-radius: 2px;
+    background-color: rgba(46,46,46,0.75)!important;
+}
+@media(max-width:767px){
+    .abcoffee_variations_wrap{
+        padding:0 10px;
+    }
+}
+/* checkout page */
