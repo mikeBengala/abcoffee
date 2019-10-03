@@ -1,15 +1,8 @@
 <?php
-function wcs_custom_get_availability( $availability, $_product ) {
-    
-    // Change In Stock Text
-    if ( $_product->is_in_stock() ) {
-        $availability['availability'] = __('Vacancies', 'abcoffee');
-    }
-    // Change Out of Stock Text
-    if ( ! $_product->is_in_stock() ) {
-        $availability['availability'] = __('Sold Out', 'abcoffee');
-    }
-    return $availability;
+function wcs_custom_get_availability( $availability, $product ) {
+	$stock = $product->get_stock_quantity();
+	if ( $product->is_in_stock() && $product->managing_stock() ) $availability = __( 'Vacancies: ' . $stock, 'abcoffe' );
+	return $availability;
 }
-add_filter( 'woocommerce_get_availability', 'wcs_custom_get_availability', 1, 2);
+add_filter( 'woocommerce_get_availability_text', 'wcs_custom_get_availability', 1, 2);
 ?>

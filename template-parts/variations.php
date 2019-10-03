@@ -8,8 +8,8 @@ $available_variations = $product->get_available_variations();
 <?php foreach($available_variations as $variation){?>
 	<?php
 		$the_date = $variation["attributes"]["attribute_date"];
-		$written_date_part1 = date('d');
-		$written_date_part2 = date('F Y');
+		$written_date_part1 = date('d', strtotime($the_date));
+		$written_date_part2 = date('F Y', strtotime($the_date));
 		$variation_add_to_cart_href = get_site_url() . "/cart/?add-to-cart=" . $id . "&variation_id=" . $variation["variation_id"] . "&attribute_date=" . $the_date;
 	?>
 	<div class="abcoffee_the_variation">

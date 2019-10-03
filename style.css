@@ -1090,6 +1090,7 @@ a.event_add_to_cart:hover{
     text-transform: uppercase;
     color: #9DA9B9;
     padding-bottom:7px;
+    width:100%;
 }
 .abcoffee_the_variation .the_level span{
     font-family: Work Sans;
@@ -1099,6 +1100,7 @@ a.event_add_to_cart:hover{
     line-height: 100%;
     color: #525252;
     margin-left: 6px;
+
 }
 .abcoffee_the_variation .the_price{
     text-align: center;
@@ -1125,27 +1127,119 @@ a.event_add_to_cart:hover{
     padding-right:20px;
     text-align: right;
 }
-.abcoffee_the_variation .variations_add_to_cart{
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.06);
-    border-radius: 2px;
-    padding:12px 20px;
-    color: #2E2E2E;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.06);
-    transition: all 0.35s ease;
+.abcoffee_the_variation .name_and_level{
+    display:flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.abcoffee_the_variation .variations_add_to_cart:hover{
-    color: #F5EEDA!important;
-    border-radius: 2px;
-    background-color: rgba(46,46,46,0.75)!important;
+@media (max-width: 980px) {
+    .abcoffee_the_variation .date span{
+        font-size: 14px;
+    }
+    .abcoffee_the_variation .the_name{
+        font-size: 10px;
+        padding-bottom: 2px;
+    }
+    .abcoffee_the_variation .the_level span{
+        font-size: 16px;
+        margin-left:4px;
+    }
+    .abcoffee_the_variation .the_level img {
+        width: 12px;
+    }
+    .abcoffee_the_variation .first_section{
+        width:45%;
+    }
+    .abcoffee_the_variation .seccond_section{
+        width:55%;
+    }
+    .abcoffee_the_variation .the_price{
+        width:20%;
+    }
+    .abcoffee_the_variation .availability, .abcoffee_the_variation .the_add_to_cart_button_wrap{
+        width:40%;
+    }
 }
-@media(max-width:767px){
+@media(min-width:721px){
+    .abcoffee_the_variation .variations_add_to_cart{
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.06);
+        border-radius: 2px;
+        padding:12px 20px;
+        color: #2E2E2E;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.06);
+        transition: all 0.35s ease;
+    }
+    .abcoffee_the_variation .variations_add_to_cart:hover{
+        color: #F5EEDA!important;
+        border-radius: 2px;
+        background-color: rgba(46,46,46,0.75)!important;
+    }
+}
+@media(max-width:720px){
     .abcoffee_variations_wrap{
         padding:0 10px;
     }
-}
+    .abcoffee_the_variation{
+         flex-direction: column;
+    }
+    .abcoffee_the_variation .first_section, .abcoffee_the_variation .seccond_section{
+        padding:20px;
+        width:100%;
+        justify-content: space-between;
+    }
+    .abcoffee_the_variation .first_section{
+        flex-direction: row-reverse;
+        padding-bottom:0;
+    }
+    .abcoffee_the_variation .date{
+        margin:0;
+    }
+    .abcoffee_the_variation .date span{
+        text-align:right;
+    }
+    .abcoffee_the_variation .the_name {
+        font-size: 12px;
+    }
+    .abcoffee_the_variation .the_level img{
+        width:15px;
+    }
+    .abcoffee_the_variation .the_level span{
+        font-size: 17px;
+    }
+    .abcoffee_the_variation .date {
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+    .abcoffee_the_variation .the_add_to_cart_button_wrap, .abcoffee_the_variation .availability, .abcoffee_the_variation .the_price{
+        width:33.333%;
+    }
+    .abcoffee_the_variation .the_price {
+        text-align: left;
+    }
+    .abcoffee_the_variation .availability p.stock{
+        text-align: center;
+    }
+    .abcoffee_the_variation .the_add_to_cart_button_wrap {
+        text-align: right;
+    }
+    .abcoffee_the_variation .variations_add_to_cart{
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 100%;
+        color: #5B8899;
+        text-transform: uppercase;
+    }
+    .abcoffee_the_variation .availability p.stock{
+        font-size: 12px;
+        letter-spacing: -1px;
+    }
+}   
 /* checkout page */
