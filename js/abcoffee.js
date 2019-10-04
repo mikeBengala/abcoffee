@@ -1,8 +1,16 @@
-Main_calendar = {
+Main_abcoffee = {
 	init:function(){
-		var events = Main_calendar.get_events_array();
-		Main_calendar.trigger_calendar(events);
-		Main_calendar.trigger_nice_select();
+		var events = Main_abcoffee.get_events_array();
+		Main_abcoffee.trigger_calendar(events);
+		Main_abcoffee.trigger_nice_select();
+		Main_abcoffee.course_level_translation();
+	},
+	course_level_translation:function(){
+		if($("html").attr("lang") == "en-GB" || $("html").attr("lang") == "en-US"){
+			if($(".level_description").length > 0){
+				console.log("special translations go here");
+			}
+		}
 	},
 	trigger_nice_select:function(){
 		if($(".calendar_filters_wrap").length > 0){
@@ -109,8 +117,8 @@ Main_calendar = {
 
 	    $("#calendar_cat_filter, #calendar_level_filter, #calendar_tags_filter").change(function(){
 			calendar.destroy();
-			var events = Main_calendar.get_events_array();
-			Main_calendar.trigger_calendar(events);
+			var events = Main_abcoffee.get_events_array();
+			Main_abcoffee.trigger_calendar(events);
 		});
 	}
 }
@@ -118,6 +126,6 @@ Main_calendar = {
 var $ = jQuery;
 $(function(){
 	if($("#calendar").length > 0){
-		Main_calendar.init();
+		Main_abcoffee.init();
 	}
 });

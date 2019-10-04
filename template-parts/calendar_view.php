@@ -1,7 +1,7 @@
 <div class="calendar_wrap">
 	<div id="calendar"></div>
 </div>
-<div class="courses_loop_wrap">
+<div class="courses_calendar_loop_wrap">
 	
 	<?php foreach($calendar_arr["products"] as $this_product){?>
 

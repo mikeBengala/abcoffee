@@ -22,7 +22,6 @@ function abcoffee_get_the_calendar_arr(){
 	        	
 	            $atribute_name = "attribute_date";
 	            $variations = $product->get_available_variations();
-
             	foreach($variations as $variation){
             		if(isset($variation["attributes"][$atribute_name]) && $variation["attributes"][$atribute_name] != ""){
                         array_push($all_dates, $variation["attributes"][$atribute_name]);

@@ -51,9 +51,8 @@
                 <div class="course_content">
                     <?php the_excerpt();?>
                 </div>
-                
                 <?php if(isset($variations[0]["attributes"][$atribute_name])){ ?>
-                    
+
                     <div class="course_levels">
                         <?php $count = 0;?>
                         <?php foreach($variations as $variation){?>
@@ -67,11 +66,17 @@
                                 }
                             ?>
                             <?php if($is_variation_in_use == false){?>
+                                <?php 
+                                    
+                                    $terms = get_terms( array('slug' => $variation["attributes"][$atribute_name]) );
+                                    $term_label = $terms[0]->name;
+                                    
+                                ?>
                                 <div class="level">
                                     <div class="level_image_wrap">
                                         <img src="<?=$variation["image"]["url"]?>">
                                     </div>
-                                    <div class="level_description"><span class="designation"><?=$variation["attributes"][$atribute_name]?> · <?=$variation["variation_description"]?></span><span class="value"><?=$variation["display_regular_price"]?>€</span></div>
+                                    <div class="level_description"><span class="designation"><?=$term_label?> · <?=$variation["variation_description"]?></span><span class="value"><?=$variation["display_regular_price"]?>€</span></div>
                                 </div>
                                 <?php array_push($used_variations_checker, $variation["attributes"][$atribute_name]);?>
                             <?php }?>

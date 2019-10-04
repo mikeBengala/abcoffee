@@ -1,4 +1,5 @@
 <?php
+require_once 'functions/validate_date.php';
 require_once 'functions/enqueue.php';
 require_once 'functions/unique_multidim_array.php';
 require_once 'functions/calendar.php';
