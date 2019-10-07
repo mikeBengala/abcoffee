@@ -10,6 +10,8 @@ function abcoffee_enqueue() {
     wp_enqueue_script( 'popper', get_stylesheet_directory_uri() . '/js/popper.min.js', array("jquery"));
     wp_enqueue_script( 'tooltip', get_stylesheet_directory_uri() . '/js/tooltip.min.js', array("jquery"));
     wp_enqueue_script( 'fullcalendar', get_stylesheet_directory_uri() . '/js/fullcalendar.min.js', array("jquery", "moment", 'popper'));
+    wp_enqueue_script( 'fullcalendar_all_lang', get_stylesheet_directory_uri() . '/js/locales-all.min.js', array('fullcalendar'));
+
 
     wp_enqueue_script( 'abccoffee', get_stylesheet_directory_uri() . '/js/abcoffee.js', array('fullcalendar'));
 }

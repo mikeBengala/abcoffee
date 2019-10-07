@@ -14,8 +14,8 @@
 			data-tag='<?=$this_product["tags"]?>'
 			data-level='<?=$this_product["level"]?>'
 			data-index="<?=$this_product["index"]?>"
-			data-description="<?=$this_product["description"]?>"
-			data-add-to-cart="<?=$this_product["variation_add_to_cart_href"]?>">
+			data-add-to-cart="<?=$this_product["variation_add_to_cart_href"]?>"
+			data-color="<?=$this_product["color"]?>">
 			
 			<div class="calendar_product_image_wrap">
 				<img src="<?=$this_product["image"]?>">
@@ -27,6 +27,9 @@
 			</div>
 			<div class="availability">
 				<?=$this_product["availability"]?>
+			</div>
+			<div class="description">
+				<?=$this_product["description"]?>
 			</div>
 
 		</a>

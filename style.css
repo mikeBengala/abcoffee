@@ -936,8 +936,10 @@ div#page-container {overflow-x: hidden;}
     transition: all 0.2s ease;
 }
 #content-area table td.fc-event-container,
-.entry-content tr td.fc-event-container{
-    padding:0;
+.entry-content tr td.fc-event-container,
+.entry-content tr td.fc-widget-content,
+.entry-content tr td.fc-head-container{
+    padding:0 !important;
 }
 .fc-view{
     background: #F7F7F7;
@@ -1048,29 +1050,38 @@ a.event_add_to_cart:hover{
 .abcoffee_the_variation:last-child{
     margin-bottom:0;
 }
-.abcoffee_the_variation .first_section, .abcoffee_the_variation .seccond_section{
-    width:50%;
-    padding:25px 30px;
-    display: flex;
-}
 .abcoffee_the_variation .first_section{
     padding-right:15px;
     justify-content: flex-start;
+    width:60%;
+    padding:25px 30px;
+    display: flex;
 }
 .abcoffee_the_variation .seccond_section{
     padding-left:15px;
     justify-content: flex-end;
     align-items: center;
+    width:40%;
+    padding:25px 30px;
+    display: flex;
 }
 .abcoffee_the_variation .date{
     display: flex;
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-right:20px;
-    width:50%;
+    margin-right:10px;
+    width:25%;
 }
-.abcoffee_the_variation .date span{
+.abcoffee_the_variation .time{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right:20px;
+    width:25%;
+}
+.abcoffee_the_variation .date span, .abcoffee_the_variation .time span{
     font-family: Work Sans;
     font-style: normal;
     font-weight: 500;
@@ -1165,6 +1176,7 @@ a.event_add_to_cart:hover{
         width:40%;
     }
 }
+
 @media(min-width:721px){
     .abcoffee_the_variation .variations_add_to_cart{
         background: rgba(255, 255, 255, 0.7);
@@ -1184,8 +1196,25 @@ a.event_add_to_cart:hover{
         border-radius: 2px;
         background-color: rgba(46,46,46,0.75)!important;
     }
+
+}
+@media(max-width:767px){
+    .fc-toolbar h2{
+        font-size:40px;
+    }
+    .nice-select{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .nice-select.open .list{
+        width:100%;
+    }
+    .entry-content thead th.fc-day-header{
+        padding:5px;
+    }
 }
 @media(max-width:720px){
+
     .abcoffee_variations_wrap{
         padding:0 10px;
     }
@@ -1461,8 +1490,8 @@ a.event_add_to_cart:hover{
     visibility: visible;
     width:200vw;
     left:-100vW;
-    top:-50px;
-    height:calc(100% + 50px);
+    top:-90px;
+    height:calc(100% + 90px);
     background: #fff;
     position: absolute;
 }
@@ -1482,6 +1511,127 @@ textarea#order_comments::-webkit-input-placeholder {
     /* Internet Explorer 10+ */
      color: transparent !important;
 }
- textarea#order_comments::placeholder {
+textarea#order_comments::placeholder {
      color: transparent !important;
+}
+.woocommerce-page table.shop_table{
+    position: relative;
+}
+.cart-subtotal th{
+    text-align: left;
+}
+#order_review_heading{
+    position: relative;
+    z-index: 10;
+}
+.woocommerce-checkout-review-order-table .fee th{
+    text-align: left;
+}
+.woocommerce-checkout-review-order-table .fee td{
+    text-align: right;
+}
+.woocommerce-checkout-review-order-table th, .woocommerce-checkout-review-order-table td{
+    border:0 !important;
+    display: table-cell;
+}
+.woocommerce-checkout-review-order-table{
+    border-collapse: collapse !important;
+    display:table;
+}
+.woocommerce-checkout-review-order-table tr{
+    display: table-row;
+    border:1px solid rgba(0,0,0,.1) !important;
+}
+    #order_review .variation dd.variation-date:last-child{
+        display: none !important;
+    }
+@media(max-width:768px){
+    .woocommerce-cart-form td[data-title="Subtotal"]{
+        float:left;
+        width:100%;
+    }
+    .woocommerce-cart-form td[data-title="Total"]:before{
+        display: none;
+    }
+    .woocommerce-cart-form tr.order-total{
+        float:left;
+        width:100%;
+    }
+
+    .woocommerce-cart-form .order-total td{
+        float:right;
+    }
+    .woocommerce-cart-form table.shop_table_responsive tbody th, .woocommerce-cart-form table.shop_table_responsive tbody th {
+        display: block;
+    }
+    .woocommerce-cart-form table.shop_table_responsive tr:nth-child(2n) td, .woocommerce-cart-form table.shop_table_responsive tr:nth-child(2n) td{
+        background: transparent;
+        border:0;
+    }
+    .woocommerce-cart .cart-collaterals .cart_totals tr th{
+        background: transparent;
+        border:0;   
+    }
+    .woocommerce-cart-form .order-total{
+        border-top:solid 1px #EBE9EB;
+    }
+    .woocommerce-cart-form .cart-subtotal th{
+        display: none !important;
+    }
+    .woocommerce-cart-form .product-subtotal{
+        display: none !important;
+    }
+    .woocommerce-cart-form .product-name:before{
+        display: none;
+    }
+    .woocommerce-cart-form .product-name a, .woocommerce-cart-form .product-name .variation{
+        text-align: center;
+        width:100% !important;
+        display: block;
+    }
+    .woocommerce-cart-form .product-price:before, .woocommerce-cart-form .product-quantity:before{
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 1.2;
+        color: rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top:10px;
+    }
+    .woocommerce-cart-form .product-price, .woocommerce-cart-form .woocommerce-Price-amount{
+        font-family: Playfair Display;
+        font-size: 20px;
+        line-height: 100%;
+        color: #3D3D3D;
+    }
+    .woocommerce-cart-form table tr, .woocommerce-cart-form table.cart tr, table.cart tr{
+        padding:0 !important;
+    }
+    .woocommerce-cart-form table.cart td{
+        padding:.857em 10px !important;
+    }
+    
+    .woocommerce-cart .order-total, .woocommerce-cart .cart-subtotal{
+        width:100%;
+        float:left;
+        height:50px;
+    }
+    .woocommerce-message a.button.wc-forward{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .woocommerce-cart .order-total td:before, .woocommerce-cart .cart-subtotal td:before{
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 100%;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.5);
+        margin-top: 8px;
+    }
 }

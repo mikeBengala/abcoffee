@@ -19,10 +19,20 @@ function abcoffee_get_the_calendar_arr(){
 	        $product = wc_get_product();
 
 	        if ( $product->is_type( 'variable' ) ) {
-	        	
-	            $atribute_name = "attribute_date";
+
+
+	            
 	            $variations = $product->get_available_variations();
             	foreach($variations as $variation){
+
+                    $atribute_name = "attribute_data";
+                    
+                    if(isset($variation["attributes"]["attribute_date"])){
+                        $atribute_name = "attribute_date";    
+                    }else if(isset($variation["attributes"]["attribute_data"])){
+                        $atribute_name = "attribute_data";
+                    }
+                    
             		if(isset($variation["attributes"][$atribute_name]) && $variation["attributes"][$atribute_name] != ""){
                         array_push($all_dates, $variation["attributes"][$atribute_name]);
 
@@ -57,13 +67,13 @@ function abcoffee_get_the_calendar_arr(){
                         //date
                         $date = $variation["attributes"][$atribute_name];
 
-
                         $variation_add_to_cart_href = get_site_url() . "/cart/?add-to-cart=" . $id . "&variation_id=" . $variation_id . "&attribute_date=" . $date;
                         
-                        if(strpos($date, ' até ') !== false){
-                            $date = explode(" até ", $date);
+                        if(strpos($date, ' ') !== false){
+                            $date = explode(" ", $date);
+                            $date_array_count = count($date) - 1;
                             $start_date = $date[0];
-                            $end_date = $date[1];
+                            $end_date = $date[$date_array_count];
                         }else{
                             $start_date = $date;
                             $end_date = false;
@@ -102,10 +112,15 @@ function abcoffee_get_the_calendar_arr(){
                         if ( $terms && ! is_wp_error( $terms ) ) {
                             $tag_links = array();
                             foreach ( $terms as $term ) {
+                                $color = "#fff";
+                                if(get_term_meta($term->term_id, "cc_color", true) != ""){
+                                   $color = get_term_meta($term->term_id, "cc_color", true);
+                                }
                                 $tag_links[] = $term->slug;
                                 $this_tag = array(
                                     "slug" => $term->slug,
-                                    "name" => $term->name
+                                    "name" => $term->name,
+                                    "color" => "#fff"
                                 );
                                 array_push($all_tags, $this_tag);
                             }
@@ -131,7 +146,8 @@ function abcoffee_get_the_calendar_arr(){
                             "level" => $level,
                             "index" => $index,
                             "availability" => $availability,
-                            "variation_add_to_cart_href" => $variation_add_to_cart_href
+                            "variation_add_to_cart_href" => $variation_add_to_cart_href,
+                            "color" => $color
                         );
                         array_push($products, $this_product);
                         $index++;
