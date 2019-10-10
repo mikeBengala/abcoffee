@@ -1145,6 +1145,7 @@ a.event_add_to_cart:hover{
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: calc(45% - 20px);
 }
 @media (max-width: 980px) {
     .abcoffee_the_variation .date span{

@@ -42,6 +42,21 @@ Main_abcoffee = {
 					});
 				});
 			}
+			if($(".the_level span").length > 0){
+				$(".the_level span").each(function(){
+					
+					var $_this = $(this),
+						translatable_text = $_this.html();
+					//console.log(translatable_text);
+
+					$.each(the_words , function(key, value){
+						if(key == translatable_text){
+							$_this.html(value.pt);
+						}
+						
+					});
+				});
+			}
 
 			if($("h1.main_title.entry-title").html() == "Registrations" && Main_abcoffee.current_lang() == "pt-PT"){
 				$("h1.main_title.entry-title").html("Inscrições")
