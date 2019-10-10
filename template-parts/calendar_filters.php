@@ -29,10 +29,10 @@ if(pll_current_language() == 'pt') {
     <?php //end levels ----------------------> ?>
 
     <?php //tags ------------------------------> ?>
-    <select id="calendar_tags_filter">
+    <select id="calendar_tags_filter" class="has_colors">
         <option value="all" data-background="#ffffff"><?=$all_tags_string?></option>
         <?php foreach($calendar_arr["all_tags"] as $tag){?>
-            <option value="<?=$tag["slug"]?>" data-background="#<?=$tag["color"]?>"><?=$tag["name"]?></option>
+            <option value="<?=$tag["slug"]?>" data-background="<?=$tag["color"]?>"><?=$tag["name"]?></option>
         <?php }?>
     </select>
     <?php //end categories ----------------------> ?>

@@ -81,7 +81,7 @@ function abcoffee_get_the_calendar_arr(){
                         //end date
 
                         //picture
-                        $picture_url = "./img/icn_book.svg";
+                        $picture_url = get_stylesheet_directory_uri() . "/img/icn_book.svg";
                         if(has_post_thumbnail()){
                             $picture_url = get_the_post_thumbnail_url();
                         }
@@ -108,11 +108,11 @@ function abcoffee_get_the_calendar_arr(){
 
                         //get tags
                         $on_tag = "";
+                        $color = "#ffffff";
                         $terms = get_the_terms( $id, 'product_tag' );
                         if ( $terms && ! is_wp_error( $terms ) ) {
                             $tag_links = array();
                             foreach ( $terms as $term ) {
-                                $color = "#fff";
                                 if(get_term_meta($term->term_id, "cc_color", true) != ""){
                                    $color = get_term_meta($term->term_id, "cc_color", true);
                                 }
@@ -120,7 +120,7 @@ function abcoffee_get_the_calendar_arr(){
                                 $this_tag = array(
                                     "slug" => $term->slug,
                                     "name" => $term->name,
-                                    "color" => "#fff"
+                                    "color" => $color
                                 );
                                 array_push($all_tags, $this_tag);
                             }

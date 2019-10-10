@@ -7,6 +7,7 @@ Main_abcoffee = {
 			var events = Main_abcoffee.get_events_array();
 			Main_abcoffee.trigger_calendar(events);
 			Main_abcoffee.trigger_nice_select();
+			Main_abcoffee.set_calendar_next_prev_click_event();
 		}
 	},
 	live_translations:function(){
@@ -105,6 +106,61 @@ Main_abcoffee = {
 			$("#calendar_cat_filter, #calendar_level_filter, #calendar_tags_filter").niceSelect();
 		}
 	},
+	setup_calendar_colors_on_filter:function(){
+		var colors_arr = [];
+		$("#calendar_tags_filter option").each(function(){
+			$color = $(this).attr("data-background");
+			colors_arr.push($color);
+		});
+
+
+		$(".nice-select.has_colors span").css("background", colors_arr[0]);
+		$(".nice-select.has_colors .list li").each(function(index){
+			
+			var color = Main_abcoffee.choose_bg_color_by_font_color(colors_arr[index]);
+			$(this).css({
+				"background": colors_arr[index],
+				"color": color
+			});
+			
+		});
+		
+	},
+	choose_bg_color_by_font_color:function(font_color){
+		var rgb_arr = Main_abcoffee.hexToRgb(font_color),
+			red = rgb_arr.r,
+			green = rgb_arr.g,
+			blue = rgb_arr.b;
+		
+		var L1 = L2 = red;
+		if(green > L1){
+			L1 = green;
+		}
+		if(blue > L1){
+			L1 = blue;
+		}
+		if(green < L2){
+			L2 = green;
+		}
+		if(blue < L2){
+			L2 = blue;
+		}
+		var L = (L1 + 0.05) / (L2 + 0.05);
+
+		if (L > 2){
+			return "#ffffff";
+		}else{
+			return "#000000";
+		}
+	},
+	hexToRgb:function(hex) {
+		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		return result ? {
+			r: parseInt(result[1], 16),
+			g: parseInt(result[2], 16),
+			b: parseInt(result[3], 16)
+		} : null;
+	},
 	get_events_array:function(){
 		
 		var filter_cat = $('#calendar_cat_filter :selected').val(),
@@ -127,7 +183,8 @@ Main_abcoffee = {
 				picture = $_this.find(".calendar_product_image_wrap img").attr("data-lazy-src"),
 				description = $_this.find(".description").html(),
 				availability = $_this.find(".availability p").html(),
-				add_to_cart_href= $_this.attr("data-add-to-cart");
+				add_to_cart_href= $_this.attr("data-add-to-cart"),
+				bg_color = $_this.attr("data-color");
 
 			if(availability == undefined){
 				availability = "Available";
@@ -140,7 +197,7 @@ Main_abcoffee = {
 			}
 
 			var this_event = {
-				classNames:cat,
+				classNames:bg_color,
 				url:url,
 				id: index,
 				title:this_title,
@@ -152,7 +209,8 @@ Main_abcoffee = {
 					picture: picture,
 					variation_description : description,
 					availability: availability,
-					add_to_cart_href: add_to_cart_href
+					add_to_cart_href: add_to_cart_href,
+					bg_color: bg_color
 				}
 			};				
 
@@ -230,10 +288,37 @@ Main_abcoffee = {
 			var events = Main_abcoffee.get_events_array();
 			Main_abcoffee.trigger_calendar(events);
 		});
+
+		Main_abcoffee.set_calendar_events_colors();
+	},
+	set_calendar_events_colors:function(){
+		$("a.fc-day-grid-event").each(function(){
+			var $_this = $(this),
+				html_class = $_this.attr("class"),
+				bg_color = "#fffff";
+
+			if(html_class.includes("#")){
+				bg_color = "#" + html_class.split("#")[1];
+			}				
+			
+			var color = Main_abcoffee.choose_bg_color_by_font_color(bg_color);
+			$(this).css({
+				"background": bg_color,
+				"color": color
+			});
+		});
+	},
+	set_calendar_next_prev_click_event:function(){
+		$(".fc-prev-button, .fc-next-button").click(function(){
+			Main_abcoffee.set_calendar_events_colors();
+		});
 	}
 }
 
 var $ = jQuery;
 $(function(){
 	Main_abcoffee.init();
+});
+$(window).load(function(){
+	Main_abcoffee.setup_calendar_colors_on_filter();
 });
