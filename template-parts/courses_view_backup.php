@@ -1,4 +1,3 @@
-
 <?php
     $args = array(
         'post_type' => 'product',

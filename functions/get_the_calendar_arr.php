@@ -1,5 +1,5 @@
 <?php
-function abcoffee_get_the_calendar_arr(){
+function get_the_calendar_arr(){
 	$args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
