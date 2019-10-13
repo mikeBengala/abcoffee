@@ -51,10 +51,30 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
                         	"display_regular_price" => $variation["display_regular_price"]
                         );
 
-                        if(isset($variation["attributes"]["attribute_date"]) || isset($variation["attributes"]["attribute_data"])){
-                        	array_push($variations_countaining_dates, $this_variation_arr);
+                        $variation_has_valid_date = false;
+                        
+                        if(isset($variation["attributes"]["attribute_date"])){
+                            $this_variation_arr["date"] = $variation["attributes"]["attribute_date"];
+                            $first_date = substr($variation["attributes"]["attribute_date"], 0, 10);
+
+                            if(validateDate($first_date)){
+                                $variation_has_valid_date = true;
+                            }
+                        }
+                        if(isset($variation["attributes"]["attribute_data"])){
+                            $this_variation_arr["date"] = $variation["attributes"]["attribute_data"];
+                            $first_date = substr($variation["attributes"]["attribute_data"], 0, 10);
+
+                            if(validateDate($first_date)){
+                                $variation_has_valid_date = true;
+                            }
+                        }
+                        
+
+                        if($variation_has_valid_date){
+                            array_push($variations_countaining_dates, $this_variation_arr);
                         }else{
-                        	array_push($variations_without_dates, $this_variation_arr);
+                            array_push($variations_without_dates, $this_variation_arr);
                         }
                         
                     }

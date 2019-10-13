@@ -27,6 +27,7 @@
                             <?php if(!empty($product["variations_countaining_dates"])){ ?>
                                 
                                 <?php foreach($product["variations_countaining_dates"] as $variation){?>
+                                    <?php //var_dump($variation["date"])?>
                                     <div class="level">
                                         <div class="level_image_wrap">
                                             <img src="<?=$variation["image"]?>">
