@@ -27,7 +27,6 @@
                             <?php if(!empty($product["variations_countaining_dates"])){ ?>
                                 
                                 <?php foreach($product["variations_countaining_dates"] as $variation){?>
-                                    <?php //var_dump($variation["date"])?>
                                     <div class="level">
                                         <div class="level_image_wrap">
                                             <img src="<?=$variation["image"]?>">
@@ -35,7 +34,7 @@
                                         <div class="level_description"><span class="designation"><span class="translatable_term_label"><?=$variation["term_label"]?></span> · <?=$variation["variation_description"]?></span><span class="value"><?=$variation["display_regular_price"]?>€</span></div>
                                     </div>
                                 <?php }?>
-                                <?php var_dump($product["variations_without_dates"]);?>
+                                <?php //var_dump($product["variations_without_dates"]);?>
 
 
 

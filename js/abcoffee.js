@@ -1,7 +1,6 @@
 Main_abcoffee = {
 	init:function(){
-		
-		Main_abcoffee.convert_dates_to_string_attract(".woocommerce .woocommerce-cart-form__cart-item .variation-date:last-child p");
+		// Main_abcoffee.convert_dates_to_string_attract(".convert_date_to_string");
 		Main_abcoffee.live_translations();
 		if($("#calendar").length > 0){
 			var events = Main_abcoffee.get_events_array();
