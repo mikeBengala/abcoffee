@@ -894,6 +894,9 @@ a.false_broken_link.broken_link {
     }
 }
 /* shortcode calendar view */
+.calendar_course img{
+    width:10px;
+}
 .nice-select{
     float:unset;
     display: inline-block;

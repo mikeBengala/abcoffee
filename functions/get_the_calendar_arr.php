@@ -59,7 +59,7 @@ function get_the_calendar_arr(){
                         //level
                         $level = "";
                         if(isset($variation["attributes"]["attribute_pa_degree-of-difficulty"])){
-                            $level = $variation["attributes"]["attribute_pa_degree-of-difficulty"]; //"iniciado";
+                            $level = $variation["attributes"]["attribute_pa_degree-of-difficulty"];
                             array_push($all_levels, $level);
                         }
                         //end level

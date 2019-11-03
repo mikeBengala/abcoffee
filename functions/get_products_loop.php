@@ -31,7 +31,8 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
             $the_permalink = get_the_permalink();
             $variations_countaining_dates = array();
             $variations_without_dates = array();
-            
+            $time = "";
+
             if($product->is_type( 'variable' )){
 
             	$variations = $product->get_available_variations();
@@ -75,9 +76,12 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
                             array_push($variations_countaining_dates, $this_variation_arr);
                         }else{
                             array_push($variations_without_dates, $this_variation_arr);
-                        }
+                        }  
                         
+                    }else if(isset($variation["attributes"]["attribute_time"])){
+                        $time = $variation["attributes"]["attribute_time"];
                     }
+
 
             	}
 
@@ -94,7 +98,8 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
             	"price" => $price,
             	"the_permalink" => $the_permalink,
             	"variations_countaining_dates" => $unique_variations_countaining_dates,
-            	"variations_without_dates" => $unique_variations_without_dates
+            	"variations_without_dates" => $unique_variations_without_dates,
+                "time" => $time
             );
             array_push($products, $product);
     	}

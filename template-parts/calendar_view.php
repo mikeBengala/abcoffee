@@ -5,7 +5,7 @@
 	
 	<?php foreach($calendar_arr["products"] as $this_product){?>
 
-
+		<?php var_dump($this_product)?>
 		<a  href="<?=$this_product["permalink"]?>"
 			class="course calendar_course product_id<?=$this_product["id"]?>"
 			data-start-date='<?=$this_product["start_date"]?>'
