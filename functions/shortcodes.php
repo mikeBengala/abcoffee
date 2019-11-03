@@ -30,6 +30,8 @@ function calendar_shortcode(){
         get_template_part( 'template-parts/calendar_view' );
         return ob_get_clean();
     }
+
+    // return '<p style="text-align:center;">Calendar goes here</p>';
 }
 add_shortcode("calendario", "calendar_shortcode");
 
@@ -45,6 +47,7 @@ function get_current_product_variations(){
         return ob_get_clean();
     }
     
+    // return '<p style="text-align:center;">Variation product goes here</p>';
 }
 add_shortcode("get_variations", "get_current_product_variations");
 ?>

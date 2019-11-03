@@ -147,7 +147,8 @@ function get_the_calendar_arr(){
                             "index" => $index,
                             "availability" => $availability,
                             "variation_add_to_cart_href" => $variation_add_to_cart_href,
-                            "color" => $color
+                            "color" => $color,
+                            "price" => $variation["display_price"]
                         );
                         array_push($products, $this_product);
                         $index++;

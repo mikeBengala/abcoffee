@@ -1,3 +1,4 @@
+var calendar_store_current_date = false;
 Main_abcoffee = {
 	init:function(){
 		// Main_abcoffee.convert_dates_to_string_attract(".convert_date_to_string");
@@ -6,7 +7,6 @@ Main_abcoffee = {
 			var events = Main_abcoffee.get_events_array();
 			Main_abcoffee.trigger_calendar(events);
 			Main_abcoffee.trigger_nice_select();
-			Main_abcoffee.set_calendar_next_prev_click_event();
 		}
 	},
 	live_translations:function(){
@@ -198,7 +198,8 @@ Main_abcoffee = {
 				description = $_this.find(".description").html(),
 				availability = $_this.find(".availability p").html(),
 				add_to_cart_href= $_this.attr("data-add-to-cart"),
-				bg_color = $_this.attr("data-color");
+				bg_color = $_this.attr("data-color"),
+				price = $_this.find(".price").html() + "€";
 
 			if(availability == undefined){
 				availability = "Available";
@@ -224,7 +225,9 @@ Main_abcoffee = {
 					variation_description : description,
 					availability: availability,
 					add_to_cart_href: add_to_cart_href,
-					bg_color: bg_color
+					bg_color: bg_color,
+					level: level,
+					price: price
 				}
 			};				
 
@@ -264,8 +267,17 @@ Main_abcoffee = {
 
 		return locale;
 	},
+	get_the_date:function(first_event_date){
+		var date = first_event_date;
+		if(calendar_store_current_date != false){
+			date = calendar_store_current_date;
+		}
+		return date;
+	},
 	trigger_calendar:function(events){
+		var date = Main_abcoffee.get_the_date(events[0]["start"]);
 		var add_to_cart_text_button = "Add";
+
 		if(Main_abcoffee.current_lang() == "pt-PT"){
 			var add_to_cart_text_button = "Adicionar";
 		}
@@ -273,7 +285,7 @@ Main_abcoffee = {
 		var calendarEl = document.getElementById('calendar');
 	    var calendar = new FullCalendar.Calendar(calendarEl, {
 			plugins: [ 'interaction', 'dayGrid' ],
-			defaultDate: new Date(),
+			defaultDate: new Date(date),
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: events,
@@ -281,14 +293,13 @@ Main_abcoffee = {
 			height: "auto",
 			eventRender: function(info) {
 			    var tooltip = new Tooltip(info.el, {
-					template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip_header"><div class="tooltip_picture_wrap"><img src="'+ info.event.extendedProps.picture +'"></div><div class="tooltip-inner"></div></div><div class="event_footer"><div>' + info.event.extendedProps.variation_description + '</div><div>'+ info.event.extendedProps.availability +'</div></div><div class="event_info">' + info.event.extendedProps.info + '</div><a class="event_add_to_cart" href="'+info.event.extendedProps.add_to_cart_href+'">'+ add_to_cart_text_button +'</a></div>',
+					template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip_header"><div class="tooltip_picture_wrap"><img src="'+ info.event.extendedProps.picture +'"></div><div class="tooltip-inner"></div></div><div class="event_footer"><div>' + info.event.extendedProps.variation_description + '</div><div>'+ info.event.extendedProps.availability +'</div><div>'+info.event.extendedProps.level+'</div></div><div class="event_info">' + info.event.extendedProps.info + '</div><div class="event_price">'+ info.event.extendedProps.price +'</div><a class="event_add_to_cart" href="'+info.event.extendedProps.add_to_cart_href+'">'+ add_to_cart_text_button +'</a></div>',
 					title: info.event.extendedProps.description,
 					placement: 'bottom',
 					trigger: 'hover',
 					container: 'body'
 			    });
 			}
-			
 	    });
 	    
 	    if(!$("#calendar").hasClass("fc")){
@@ -298,12 +309,28 @@ Main_abcoffee = {
 	    }
 
 	    $("#calendar_cat_filter, #calendar_level_filter, #calendar_tags_filter").change(function(){
+	    	if($("#calendar_cat_filter option:selected").val() == "workshops"){
+	    		$("#calendar_level_filter").val("all").prop("disabled", true).niceSelect('update');
+	    		$("#calendar_tags_filter").val("all").prop("disabled", true).niceSelect('update');
+	    		
+	    	}else{
+	    		$("#calendar_level_filter").prop("disabled", false).niceSelect('update');
+	    		$("#calendar_tags_filter").prop("disabled", false).niceSelect('update');
+	    	}
 			calendar.destroy();
 			var events = Main_abcoffee.get_events_array();
 			Main_abcoffee.trigger_calendar(events);
 		});
+	    
+	    Main_abcoffee.set_calendar_events_colors();
+	    calendar_store_current_date = calendar["state"]["currentDate"];
+		
 
-		Main_abcoffee.set_calendar_events_colors();
+
+		$(".calendar_wrap").on("click", ".fc-next-button, .fc-prev-button", function(){
+			Main_abcoffee.set_calendar_events_colors();
+			calendar_store_current_date = calendar["state"]["currentDate"];
+		});
 	},
 	set_calendar_events_colors:function(){
 		$("a.fc-day-grid-event").each(function(){
@@ -320,11 +347,6 @@ Main_abcoffee = {
 				"background": bg_color,
 				"color": color
 			});
-		});
-	},
-	set_calendar_next_prev_click_event:function(){
-		$(".fc-prev-button, .fc-next-button").click(function(){
-			Main_abcoffee.set_calendar_events_colors();
 		});
 	}
 }

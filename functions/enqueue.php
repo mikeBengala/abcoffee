@@ -6,10 +6,13 @@ function abcoffee_enqueue() {
     wp_enqueue_style( 'fullcalendar', get_stylesheet_directory_uri() . '/css/fullcalendar.css');
 
     wp_enqueue_script( 'niceselect', get_stylesheet_directory_uri() . '/js/jquery.nice-select.min.js', array("jquery"));
-    wp_enqueue_script( 'moment', get_stylesheet_directory_uri() . '/js/moment.min.js');
+    // wp_enqueue_script( 'moment', get_stylesheet_directory_uri() . '/js/moment.min.js');
+    wp_enqueue_script( 'moment', 'http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js');
+    wp_enqueue_script( 'jquery-ui', 'http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js', array("jquery"));
     wp_enqueue_script( 'popper', get_stylesheet_directory_uri() . '/js/popper.min.js', array("jquery"));
     wp_enqueue_script( 'tooltip', get_stylesheet_directory_uri() . '/js/tooltip.min.js', array("jquery"));
     wp_enqueue_script( 'fullcalendar', get_stylesheet_directory_uri() . '/js/fullcalendar.min.js', array("jquery", "moment", 'popper'));
+    // wp_enqueue_script( 'fullcalendar', 'http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js', array("jquery", "moment", 'popper'));
     wp_enqueue_script( 'fullcalendar_all_lang', get_stylesheet_directory_uri() . '/js/locales-all.min.js', array('fullcalendar'));
 
 

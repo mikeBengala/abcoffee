@@ -7,9 +7,12 @@ function get_variations(){
 		$variations = array();
 		foreach($available_variations as $variation){
 			
-			
-			$terms = get_terms( array('slug' => $variation["attributes"]["attribute_pa_degree-of-difficulty"]) );
-			$term_label = $terms[0]->name;
+			$term_label = "";
+			if(isset($variation["attributes"]["attribute_pa_degree-of-difficulty"])){
+				$terms = get_terms( array('slug' => $variation["attributes"]["attribute_pa_degree-of-difficulty"]) );
+				$term_label = $terms[0]->name;
+			}
+
 			if(pll_current_language() == 'pt') {
 				setlocale(LC_TIME, 'pt_PT', 'pt_PT.utf-8', 'pt_PT.utf-8', 'portuguese');
 				date_default_timezone_set('Europe/Lisbon');

@@ -697,7 +697,10 @@ div#page-container {overflow-x: hidden;}
     text-align: center !important;
     }
 }
-
+a.false_broken_link.broken_link {
+    padding: 0 !important;
+    background: transparent;
+}
 /* woocommerce add to cart on divi */
 /*.theme-Divi.woocommerce.et_pb_pagebuilder_layout.single.et_full_width_page #page-container .et_pb_row, .theme-Divi.woocommerce.et_pb_pagebuilder_layout.single.et_full_width_portfolio_page #page-container .et_pb_row {
     width:100% !important;
@@ -744,7 +747,7 @@ div#page-container {overflow-x: hidden;}
     border-bottom-color: transparent !important;
 }
 .course_header{
-    width:25%;
+    width:26.5%;
     display:flex;
     align-self:flex-start;
 }
@@ -764,7 +767,7 @@ div#page-container {overflow-x: hidden;}
     padding:0 15px;
 }
 .course_title_info.no_image{
-    padding:0 30px 0 45px;
+    padding:0 30px 0 30px;
     width:100%;
 }
 .course_title_info h2{
@@ -858,16 +861,20 @@ div#page-container {overflow-x: hidden;}
         padding:0 0 0 20px;
     }
     .course_title_info.no_image{
-        text-align:center;
+        text-align:left;
+        width:100%;
         padding:0 10px;
     }
     .course_header{
         align-self:center;
         max-width:650px;
         width: auto;
+        width:100%;
+        max-width: 100%;
     }
     .course_description{
         width:100%;
+        padding:0 10px;
     }
     .course_levels{
         text-align: center;
@@ -879,14 +886,10 @@ div#page-container {overflow-x: hidden;}
         align-self:flex-start;
     }
     .course_title_info.no_image{
-        text-align:left;
+        text-align:center;
         padding:0;
     }
-    .course_levels{
-        text-align: left;
-    }
     .course_levels .level{    
-        margin-bottom:5px;
         display: block;
     }
 }
@@ -1000,7 +1003,15 @@ div#page-container {overflow-x: hidden;}
     margin:0 7px;
 }
 .tooltip .tooltip-arrow, .popper .popper__arrow {
-    border-color: rgba(0,0,0,0.1);
+    border-color: #fff;
+}
+.popper[x-placement^="bottom"], .tooltip[x-placement^="bottom"]{
+    padding-top:5px;
+    margin-top:0;
+}
+.popper[x-placement^="top"], .tooltip[x-placement^="top"]{
+    padding-bottom:5px;
+    margin-bottom:0;
 }
 .fc-title{
     font-family: Work Sans;
@@ -1010,7 +1021,7 @@ div#page-container {overflow-x: hidden;}
     line-height: 100%;
     letter-spacing: 0;
     text-transform: uppercase;
-    color:#9DA9B9;
+    color:#000;
 }
 .tooltip a.event_add_to_cart{
     display: block;
@@ -1025,6 +1036,13 @@ div#page-container {overflow-x: hidden;}
     background-color: rgba(255,255,255,0.3);
     transition: all 0.2s ease;
     text-transform: uppercase;
+}
+.event_price{
+    width:100%;
+    padding: 10px;
+    background: #F0E4D2;
+    display: flex;
+    justify-content: center;
 }
 a.event_add_to_cart:hover{
     color: #F5EEDA!important;
@@ -1279,6 +1297,18 @@ a.event_add_to_cart:hover{
     }
 }   
 /* checkout page */
+.address-field label:after{
+    content:"(OPCIONAL)";
+}
+.woocommerce form .form-row.address-field.woocommerce-invalid input.input-text{
+    border-color: #bbb !important;
+}
+.address-field label .required{
+    font-size:0;
+}
+p.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received {
+    margin-bottom: 50px;
+}
 .woocommerce .woocommerce-error, .woocommerce .woocommerce-info, .woocommerce .woocommerce-message{
     background: #F0E4D2;
     border: 2px solid rgba(0, 0, 0, 0.05);

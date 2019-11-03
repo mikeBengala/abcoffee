@@ -31,6 +31,9 @@
 			<div class="description">
 				<?=$this_product["description"]?>
 			</div>
+			<div class="price">
+				<?=$this_product["price"]?>
+			</div>
 
 		</a>
 
