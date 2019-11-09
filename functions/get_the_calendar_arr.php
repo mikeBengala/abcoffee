@@ -57,11 +57,26 @@ function get_the_calendar_arr(){
                         //end description
 
                         //level
-                        $level = "";
+                        $level_array = array(
+                                "value" => "",
+                                "label" => ""
+                            );
                         if(isset($variation["attributes"]["attribute_pa_degree-of-difficulty"])){
                             $level = $variation["attributes"]["attribute_pa_degree-of-difficulty"];
-                            array_push($all_levels, $level);
+                            $terms = get_terms( array('slug' => $level) );
+                            $term_label = $terms[0]->name;
+                            
+                            if(pll_current_language() == 'pt') {
+                                $term_label = translate_course_level_to_pt($term_label);
+                            }
+
+                            $level_array = array(
+                                "value" => $level,
+                                "label" => $term_label
+                            );
+                            array_push($all_levels, $level_array);
                         }
+
                         //end level
 
                         //date
@@ -143,7 +158,7 @@ function get_the_calendar_arr(){
                             "end_date" => $end_date,
                             "categories" => $on_cat,
                             "tags" => $on_tag,
-                            "level" => $level,
+                            "level" => $level_array,
                             "index" => $index,
                             "availability" => $availability,
                             "variation_add_to_cart_href" => $variation_add_to_cart_href,
@@ -161,7 +176,7 @@ function get_the_calendar_arr(){
         $all_dates = '["' . implode('" , "' , $all_dates) . '"]';
 		$all_cats = unique_multidim_array($all_cats,'slug');
         $all_tags = unique_multidim_array($all_tags,'slug');
-        $all_levels = array_unique($all_levels);
+        $all_levels = unique_multidim_array($all_levels, 'value');
     	$response = array(
 			"all_cats" => $all_cats,
             "all_tags" => $all_tags,

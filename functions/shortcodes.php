@@ -1,51 +1,41 @@
 <?php
 function cursos_shortcode($atts){
-    global $wp;
-    if(isset($wp->query_vars["et_pb_preview"])){
-        return '<p style="text-align:center;">Cursos go here</p>';    
-    }else{
-        $a = shortcode_atts( array(
-            'category' => 'Uncategorized',
-            'posts_per_page' => -1,
-        ), $atts );
-        $products = get_woo_products_loop($a['category'], $a["posts_per_page"]);
-        ob_start();
-        set_query_var( 'products', $products);
-        set_query_var( 'a', $a );
-        get_template_part( 'template-parts/courses_view' );
-        return ob_get_clean();
-    }
+
+    $a = shortcode_atts( array(
+        'category' => 'Uncategorized',
+        'posts_per_page' => -1,
+    ), $atts );
+    $products = get_woo_products_loop($a['category'], $a["posts_per_page"]);
+    ob_start();
+    set_query_var( 'products', $products);
+    set_query_var( 'a', $a );
+    get_template_part( 'template-parts/courses_view' );
+    return ob_get_clean();
+    
 }
 add_shortcode("cursos", "cursos_shortcode");
 
 function calendar_shortcode(){
-    global $wp;
-    if(isset($wp->query_vars["et_pb_preview"])){
-        return '<p style="text-align:center;">Calendar goes here</p>';
-    }else{
-        $calendar_arr = get_the_calendar_arr();
-        ob_start();
-        set_query_var( 'calendar_arr', $calendar_arr );
-        get_template_part( 'template-parts/calendar_filters' );
-        get_template_part( 'template-parts/calendar_view' );
-        return ob_get_clean();
-    }
+
+    $calendar_arr = get_the_calendar_arr();
+    ob_start();
+    set_query_var( 'calendar_arr', $calendar_arr );
+    get_template_part( 'template-parts/calendar_filters' );
+    get_template_part( 'template-parts/calendar_view' );
+    return ob_get_clean();
+    
 
     // return '<p style="text-align:center;">Calendar goes here</p>';
 }
 add_shortcode("calendario", "calendar_shortcode");
 
 function get_current_product_variations(){
-    global $wp;
-    if(isset($wp->query_vars["et_pb_preview"])){
-        return '<p style="text-align:center;">Variation product goes here</p>';
-    }else{
-        $variations = get_variations();
-        ob_start();
-        set_query_var( 'variations', $variations );
-        get_template_part( 'template-parts/variations_view' );
-        return ob_get_clean();
-    }
+
+    $variations = get_variations();
+    ob_start();
+    set_query_var( 'variations', $variations );
+    get_template_part( 'template-parts/variations_view' );
+    return ob_get_clean();
     
     // return '<p style="text-align:center;">Variation product goes here</p>';
 }

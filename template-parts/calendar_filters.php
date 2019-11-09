@@ -23,7 +23,7 @@ if(pll_current_language() == 'pt') {
     <select id="calendar_level_filter">
     	<option value="all"><?=$all_levels_string?></option>
         <?php foreach($calendar_arr["all_levels"] as $level){?>
-            <option value="<?=$level?>"><?=$level?></option>
+            <option value="<?=$level["value"]?>"><?=$level["label"]?></option>
         <?php }?>
     </select>
     <?php //end levels ----------------------> ?>

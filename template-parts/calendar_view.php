@@ -5,14 +5,14 @@
 	
 	<?php foreach($calendar_arr["products"] as $this_product){?>
 
-		<?php var_dump($this_product)?>
 		<a  href="<?=$this_product["permalink"]?>"
 			class="course calendar_course product_id<?=$this_product["id"]?>"
 			data-start-date='<?=$this_product["start_date"]?>'
 			data-end-date='<?=$this_product["end_date"]?>'
 			data-cat='<?=$this_product["categories"]?>'
 			data-tag='<?=$this_product["tags"]?>'
-			data-level='<?=$this_product["level"]?>'
+			data-level='<?=$this_product["level"]["value"]?>'
+			data-level-label='<?=$this_product["level"]["label"]?>'
 			data-index="<?=$this_product["index"]?>"
 			data-add-to-cart="<?=$this_product["variation_add_to_cart_href"]?>"
 			data-color="<?=$this_product["color"]?>">

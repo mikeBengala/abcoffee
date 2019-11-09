@@ -192,6 +192,7 @@ Main_abcoffee = {
 				cat = $_this.attr("data-cat"),
 				tag = $_this.attr("data-tag"),
 				level = $_this.attr("data-level"),
+				level_label = $_this.attr("data-level-label"),
 				title = $_this.find("h2").html(),
 				info = $_this.find(".content").html(),
 				picture = $_this.find(".calendar_product_image_wrap img").attr("data-lazy-src"),
@@ -227,6 +228,7 @@ Main_abcoffee = {
 					add_to_cart_href: add_to_cart_href,
 					bg_color: bg_color,
 					level: level,
+					level_label: level_label,
 					price: price
 				}
 			};				
@@ -293,7 +295,7 @@ Main_abcoffee = {
 			height: "auto",
 			eventRender: function(info) {
 			    var tooltip = new Tooltip(info.el, {
-					template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip_header"><div class="tooltip_picture_wrap"><img src="'+ info.event.extendedProps.picture +'"></div><div class="tooltip-inner"></div></div><div class="event_footer"><div>' + info.event.extendedProps.variation_description + '</div><div>'+ info.event.extendedProps.availability +'</div><div>'+info.event.extendedProps.level+'</div></div><div class="event_info">' + info.event.extendedProps.info + '</div><div class="event_price">'+ info.event.extendedProps.price +'</div><a class="event_add_to_cart" href="'+info.event.extendedProps.add_to_cart_href+'">'+ add_to_cart_text_button +'</a></div>',
+					template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip_header"><div class="tooltip_picture_wrap"><img src="'+ info.event.extendedProps.picture +'"></div><div class="tooltip-inner"></div></div><div class="event_footer"><div>' + info.event.extendedProps.variation_description + '</div><div>'+ info.event.extendedProps.availability +'</div><div>'+info.event.extendedProps.level_label+'</div></div><div class="event_info">' + info.event.extendedProps.info + '</div><div class="event_price">'+ info.event.extendedProps.price +'</div><a class="event_add_to_cart" href="'+info.event.extendedProps.add_to_cart_href+'">'+ add_to_cart_text_button +'</a></div>',
 					title: info.event.extendedProps.description,
 					placement: 'bottom',
 					trigger: 'hover',
@@ -336,7 +338,7 @@ Main_abcoffee = {
 		$("a.fc-day-grid-event").each(function(){
 			var $_this = $(this),
 				html_class = $_this.attr("class"),
-				bg_color = "#fffff";
+				bg_color = "#ffffff";
 
 			if(html_class.includes("#")){
 				bg_color = "#" + html_class.split("#")[1];
