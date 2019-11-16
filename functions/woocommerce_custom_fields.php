@@ -8,13 +8,13 @@
                 'desc_tip' => true,
                 'description' => __( 'If this product is a course or a workshop, type the teacher name here', 'abcoffee' )
             ),
-            // 'custom_text_divi_page_url' => array(
-            //     'id' => 'custom_text_divi_page_url',
-            //     'label' => __( 'Url alternativo', 'abcoffee' ),
-            //     'class' => 'abcoffee-custom-field',
-            //     'desc_tip' => true,
-            //     'description' => __( 'Example: Caso não queira utilizar a típica página de produto', 'abcoffee' ),
-            // ),
+            'custom_text_hour' => array(
+                'id' => 'custom_text_hour',
+                'label' => __( 'Hour', 'abcoffee' ),
+                'class' => 'abcoffee-custom-field',
+                'desc_tip' => true,
+                'description' => __( '2 Horas', 'abcoffee' ),
+            ),
             // 'custom_text_starting_date' => array(
             //     'id' => 'custom_text_starting_date',
             //     'label' => __( 'Starting date', 'abcoffee' ),
@@ -29,13 +29,6 @@
             //     'desc_tip' => true,
             //     'description' => __( 'If this product is a course or a workshop, add ending date here.', 'abcoffee' ),
             // ),
-            // 'custom_text_hour' => array(
-            //     'id' => 'custom_text_hour',
-            //     'label' => __( 'Hour', 'abcoffee' ),
-            //     'class' => 'abcoffee-custom-field',
-            //     'desc_tip' => true,
-            //     'description' => __( 'Example: 8pm', 'abcoffee' ),
-            // )
         );
     }
     function abcoffee_woocommerce_add_custom_fields(){

@@ -36,15 +36,13 @@
                                 <?php }?>
                                 <?php //var_dump($product["variations_without_dates"]);?>
 
-
-
                             <?php }else{?>
                                 <div class="course_levels">
                                     <div class="level">
                                         <div class="level_image_wrap">
                                             <img src="<?=get_stylesheet_directory_uri()?>/img/img_icn_coffe_level_3.svg">
                                         </div>
-                                        <div class="level_description"><span class="designation"><?=$product["time"]?></span> ·<span class="value"><?=wc_price($product["price"])?></span></div>
+                                        <div class="level_description"><span class="designation"><?=$product["hour"]?></span> ·<span class="value"><?=wc_price($product["price"])?></span></div>
                                     </div>
                                 </div>
                             <?php }?>

@@ -28,6 +28,7 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
             $excerpt = get_the_excerpt();
             $price = get_post_meta( $id, '_price', true );
             $subtitle = get_post_meta( $id, "custom_text_subtitle", true );
+            $custom_text_hour = get_post_meta( $id, "custom_text_hour", true );
             $the_permalink = get_the_permalink();
             $variations_countaining_dates = array();
             $variations_without_dates = array();
@@ -94,6 +95,7 @@ function get_woo_products_loop($cat = 'Uncategorized', $posts_per_page = -1, $at
             	"picture_url" => $picture_url,
             	"title" => $title,
             	"subtitle" => $subtitle,
+                "hour" => $custom_text_hour,
             	"excerpt" => $excerpt,
             	"price" => $price,
             	"the_permalink" => $the_permalink,
